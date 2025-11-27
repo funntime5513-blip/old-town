@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Town</title>
+<style>
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#fdfdfd;color:#222;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+
+/* Header */
+header{background:#111;color:#fff;padding:20px;}
+header .container{width:90%;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+header h1{font-size:28px;}
+nav a{color:#fff;margin-left:20px;font-weight:600;transition:0.3s;}
+nav a:hover{color:#ff6f61;}
+
+/* Hero Banner */
+.hero{height:400px;background:url('https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;}
+.hero h2{font-size:48px;text-shadow:2px 2px 10px rgba(0,0,0,0.7);}
+.hero p{font-size:20px;margin-top:10px;text-shadow:1px 1px 5px rgba(0,0,0,0.6);}
+
+/* Main layout */
+.main{display:flex;width:90%;margin:40px auto;gap:30px;}
+
+/* Sidebar filters */
+.sidebar{width:250px;}
+.sidebar h3{margin-bottom:15px;color:#111;}
+.sidebar ul{list-style:none;}
+.sidebar li{padding:8px 0;cursor:pointer;color:#666;}
+.sidebar li:hover{color:#ff6f61;}
+
+/* Product Grid */
+.products{flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;}
+.product-card:hover{transform:translateY(-5px);}
+.product-card img{width:100%;height:300px;object-fit:cover;}
+.card-body{padding:15px;text-align:center;}
+.card-body h4{margin-bottom:10px;}
+.card-body p{color:#666;margin-bottom:10px;}
+.card-body button{background:#ff6f61;color:#fff;border:none;padding:10px;width:100%;border-radius:6px;cursor:pointer;font-weight:600;transition:0.3s;}
+.card-body button:hover{background:#e65b50;}
+
+/* Pagination */
+.pagination{display:flex;justify-content:center;margin-top:30px;gap:10px;}
+.pagination button{padding:8px 12px;border:none;background:#eee;border-radius:4px;cursor:pointer;}
+.pagination button.active, .pagination button:hover{background:#ff6f61;color:#fff;}
+
+/* Footer */
+footer{background:#111;color:#fff;text-align:center;padding:30px 20px;margin-top:40px;}
+footer .socials a{margin:0 10px;font-size:18px;color:#fff;}
+footer .socials a:hover{color:#ff6f61;}
+
+/* Responsive */
+@media(max-width:768px){
+  .main{flex-direction:column;}
+  .sidebar{width:100%;}
+  .products{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+  .hero h2{font-size:36px;}
+  .hero p{font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <h1>Old Town</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero" id="home">
+  <div>
+    <h2>Old Town Collection</h2>
+    <p>Bangladesh, Dhaka, Comilla</p>
+  </div>
+</section>
+
+<!-- Main Layout -->
+<div class="main">
+  <!-- Sidebar Filters -->
+  <aside class="sidebar">
+    <h3>Gender</h3>
+    <ul>
+      <li>Women</li>
+      <li>Men</li>
+    </ul>
+    <h3>Category</h3>
+    <ul>
+      <li>Clothing</li>
+      <li>Accessories</li>
+      <li>Shoes</li>
+    </ul>
+    <h3>Filter</h3>
+    <ul>
+      <li>Clear all</li>
+    </ul>
+  </aside>
+
+  <!-- Products Grid -->
+  <div class="products" id="productGrid"></div>
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+  <button class="active">1</button>
+  <button>2</button>
+  <button>3</button>
+  <button>4</button>
+  <button>5</button>
+</div>
+
+<!-- Contact Section -->
+<section class="section" id="contact">
+  <h2 style="text-align:center;margin-bottom:40px;">Contact Us</h2>
+  <div style="max-width:600px;margin:auto;">
+    <form id="contactForm" style="display:flex;flex-direction:column;gap:15px;">
+      <input type="text" placeholder="Your Name" required style="padding:12px;border-radius:6px;border:1px solid #ccc;">
+      <input type="email" placeholder="Your Email" required style="padding:12px;border-radius:6px;border:1px solid #ccc;">
+      <textarea placeholder="Your Message" rows="5" required style="padding:12px;border-radius:6px;border:1px solid #ccc;"></textarea>
+      <button type="submit" style="background:#ff6f61;color:#fff;padding:12px;border:none;border-radius:6px;cursor:pointer;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Old Town - Bangladesh, Dhaka, Comilla</p>
+  <div class="socials">
+    <a href="#">&#x1F426;</a>
+    <a href="#">&#x1F4F1;</a>
+    <a href="#">&#x1F4F7;</a>
+  </div>
+</footer>
+
+<script>
+// Sample products
+let products = [
+  {name:'Floral Dress',img:'https://images.unsplash.com/photo-1600180758895-5a3e20fa0154?auto=format&fit=crop&w=500&q=60'},
+  {name:'Blue Maxi Dress',img:'https://images.unsplash.com/photo-1600180758764-44c0b2a247b0?auto=format&fit=crop&w=500&q=60'},
+  {name:'Elegant Shirt',img:'https://images.unsplash.com/photo-1520975622243-f0a0d1111b9c?auto=format&fit=crop&w=500&q=60'},
+  {name:'Stylish Pants',img:'https://images.unsplash.com/photo-1520975622243-f0a0d1111b9c?auto=format&fit=crop&w=500&q=60'}
+];
+
+// Render products
+const grid = document.getElementById('productGrid');
+products.forEach(p=>{
+  grid.innerHTML+=`
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="card-body">
+        <h4>${p.name}</h4>
+        <button>Add to Cart</button>
+      </div>
+    </div>`;
+});
+
+// Contact form alert
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  alert('Thank you! Your message has been sent.');
+  this.reset();
+});
+</script>
+
+</body>
+</html>
